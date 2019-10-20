@@ -1,0 +1,13 @@
+#jumboImage{
+   justify-content: center;
+   object-fit: contain;
+   width: 100%;
+   margin: 0px;
+    padding: 0px;
+
+}
+
+.background-image{
+    margin: 0px;
+    padding: 0px;
+}
