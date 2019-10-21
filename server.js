@@ -68,7 +68,9 @@ app.get("/scrape", function(req, res) {
 
     // Send a message to the client
     res.redirect('/');
+
   });
+
 });
 
 // Route for getting all Articles from the db
@@ -84,6 +86,8 @@ app.get("/articles", function(req, res) {
       res.json(err);
     });
 });
+
+
 
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function(req, res) {
@@ -120,6 +124,30 @@ app.post("/articles/:id", function(req, res) {
       res.json(err);
     });
 });
+
+
+/////----- for saved articles----
+
+
+// Route for grabbing a specific Article by id, populate it with it's note
+app.get("/saved", function(req, res) {
+  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+  db.Saved.find({})
+  .populate("saved")
+
+    .then(function(dbArticle) {
+      // If we were able to successfully find Articles, send them back to the client
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+
+    });
+});
+
+
+
 
 // Start the server
 app.listen(PORT, function() {
