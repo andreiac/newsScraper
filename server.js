@@ -77,6 +77,7 @@ app.get("/scrape", function(req, res) {
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
   db.Article.find({})
+  .populate("note")
     .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
       res.json(dbArticle);
@@ -135,9 +136,9 @@ app.get("/saved", function(req, res) {
   db.Saved.find({})
   .populate("saved")
 
-    .then(function(dbArticle) {
+    .then(function(dbSaved) {
       // If we were able to successfully find Articles, send them back to the client
-      res.json(dbArticle);
+      res.json(dbSaved);
     })
     .catch(function(err) {
       // If an error occurred, send it to the client

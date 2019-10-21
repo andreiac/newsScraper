@@ -1,15 +1,23 @@
 // Grab the articles as a json
 $.getJSON("/articles", function(data) {
   // For each one
+  
+  
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
     $("#articles").append("<div id='wrapper" + data[i]._id + "' data-id='wrapper" + data[i]._id + "' style='margin-left: auto; margin-right: auto; border: 1px solid black;margin-bottom: 15px'><div id='populatedArticle'>" + data[i].title + "<button id='writeNote' data-id='" + data[i]._id + "' class='btn btn-success save' style='float:right; border:1px solid black; margin-left:5px' >Add Note</button><button id='saveArticle' data-id='" + data[i]._id + "' class='btn btn-success save' style='float:right; border:1px solid black' >Save Article</button></div><div id='populatedLink' >" + data[i].link + "</div></div>");
 
+    
+    if (data[i].note){
+    $("#savedArticles").append("<div id='wrapper" + data[i]._id + "' data-id='wrapper" + data[i]._id + "' style='margin-left: auto; margin-right: auto; border: 1px solid black;margin-bottom: 15px'>  <div id='populatedArticle' ><a href= "+ data[i].link + "> " + data[i].title + " </a><button data-id='" + data[i]._id + "' class='btn btn-success save' style='float:right;  border:1px solid black'>Delete Article</button></div><div id='populatedLink' >" + data[i].link + "</div><div id='populatedNote' >" + data[i].note.title +"</div><div>" + data[i].note.body + "</div></div>");
+    
+    
+    
+    }
+    
+    
   }
 });
-
-
-
 
 
 
@@ -65,6 +73,7 @@ $(document).on("click", "#savenote", function() {
       console.log(data);
       // Empty the notes section
       $("#notes").empty();
+      
       $('#wrapper' + thisId).remove()
 
       
@@ -101,6 +110,9 @@ $(document).on("click", "#saveArticle", function() {
       console.log(data);
       // Empty the notes section
       $('#wrapper' + thisId).remove()
+      $("#bodyinput").val(" ")
+
+
 
       $('#savedArticles').append("<div id='wrapper" + thisId + "' data-id='wrapper" + thisId + "'><div id='populatedArticle'>" + thisId.title + "<button id='writeNote' data-id='" + thisId + "' class='btn btn-success save' style='float:right; border:1px solid black; margin-left:5px' >Add Note</button><button id='saveArticle' data-id='" + thisId + "' class='btn btn-success save' style='float:right; border:1px solid black' >Save Article</button></div><div id='populatedLink' >" + thisId.link + "</div></div>");
     });
