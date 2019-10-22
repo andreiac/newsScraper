@@ -15,5 +15,18 @@
     "express-handlebars": "^3.1.0",
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1"
-  }
+  },
+  
+
+
+
+  "_id": "heroku_nc8qpxc3.user1",
+  "user": "user1",
+  "db": "heroku_nc8qpxc3",
+  "roles": [
+      {
+          "role": "dbOwner",
+          "db": "heroku_nc8qpxc3"
+      }
+  ]
 }
