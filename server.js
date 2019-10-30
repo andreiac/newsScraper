@@ -29,7 +29,7 @@ app.use(express.static("public"));
 // Connect to the Mongo DB
 mongoose.connect
 (
-  process.env.MONGODB_URI || "mongodb://user1:password1@ds241288.mlab.com:41288/heroku_0kj8p98f", 
+  process.env.MONGODB_URI || "mongodb://user1:password1@ds137488.mlab.com:37488/heroku_nc8qpxc3", 
   { 
     useMongoClient: true 
   }
